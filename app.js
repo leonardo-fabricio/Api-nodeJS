@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-
+const upload = require('./Upload');
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/GerenciamentoReservas').then(() =>{
     console.log("Conexão estabelecida com banco")
 }).catch((erro) => {
@@ -111,6 +112,23 @@ app.delete("/deletarpe/:id", (req,res) => { // rota do tipo delete em insomnia
         })
     })
 })
+
+app.post("/upload", upload.single('image'), async (req, res) => {
+    if(req.file){
+        return res.json({
+            error: false,
+            message: "Upload Feito"
+        })
+    }
+
+    return res.status(400).json({
+        error: true,
+        message: "Não foi possivel fazer upload da imagem."
+    })
+    
+})
+
+
 app.listen(3000, () =>{
     console.log("Servidor iniciado")
 });

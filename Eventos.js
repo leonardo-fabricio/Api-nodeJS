@@ -33,6 +33,9 @@ const Eventos = new mongoose.Schema({
     },
     id_auxiliar:{
         type:Number,
+    },
+    qtd_auxiliar:{
+        type:Number,
     }
 },
 {
