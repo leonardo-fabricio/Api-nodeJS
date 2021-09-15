@@ -1,0 +1,7 @@
+
+npm init 
+npm install express
+npm install -D nodemon
+npm install pg
+npm install --save mongodb
+npm install mongoose
